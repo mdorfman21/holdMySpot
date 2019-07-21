@@ -7,7 +7,7 @@ function Button(props) {
       {props.name}
       </button>
     </div>
-  );
+  )
 }
 
 export default Button;

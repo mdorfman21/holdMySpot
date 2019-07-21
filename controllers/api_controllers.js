@@ -1,11 +1,12 @@
-const Models = requrie('../models');
+const EventModel = require('../models/EventsModel');
 
 module.exports = {
   createEvent: function(req, res) {
+    console.log(req.body)
     
     const eventName = req.body.eventName;
 
-    Models.createEvent.create({
+    EventModel.create({
       eventName
     }).then(dbEvent => {
       console.log(dbEvent);
