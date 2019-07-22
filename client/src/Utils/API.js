@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   createEvent: function(event) {
-    return axios.post('/create/event', event);
+    return axios.post("/create/event", event);
   }
 };

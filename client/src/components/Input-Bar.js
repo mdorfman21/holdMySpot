@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 function InputBar(props) {
-  return(
+  return (
     <div>
-      <input onChange={props.onChange} name={props.name}></input>
+      <input onChange={props.onChange} name={props.name} />
     </div>
-  )
+  );
 }
 
 export default InputBar;

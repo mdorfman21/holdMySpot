@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
 function Button(props) {
-  return(
+  return (
     <div>
       <button onClick={props.onClick} name={props.name}>
-      {props.name}
+        {props.name}
       </button>
     </div>
-  )
+  );
 }
 
 export default Button;
