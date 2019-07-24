@@ -5,9 +5,13 @@ module.exports = {
     console.log(req.body);
 
     const eventName = req.body.eventName;
+    const address = req.body.address;
+    const estimatedWaitTime = req.body.estimatedWaitTime;
 
     EventModel.create({
-      eventName
+      eventName,
+      address,
+      estimatedWaitTime
     })
       .then(dbEvent => {
         console.log(dbEvent);
