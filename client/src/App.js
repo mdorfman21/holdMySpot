@@ -2,20 +2,25 @@ import React, { Component } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import CreateEventContainer from "./components/Create-Event-Container";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Profile from "./components/Profile";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <div className="App">
-          <header>
-            <NavBar />
-          </header>
+        <BrowserRouter>
+          <div className="App">
+            <header>
+              <NavBar />
+            </header>
+          </div>
+            <Switch>
+              <Route exact path="/" component={CreateEventContainer} />
+              <Route exact path="/profile" component={Profile} />
+            </Switch>
+          </BrowserRouter>
         </div>
-        <div>
-          <CreateEventContainer />
-        </div>
-      </div>
     );
   }
 }
