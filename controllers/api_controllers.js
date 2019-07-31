@@ -1,4 +1,5 @@
 const EventModel = require("../models/EventsModel");
+const UserModel = require('../models/UserModel');
 
 module.exports = {
   createEvent: function(req, res) {
@@ -19,5 +20,17 @@ module.exports = {
       .catch(err => {
         res.status(500).json(err);
       });
+  },
+
+  createUser: function(req, res) {
+    const userEmail = req.body.email;
+    let isEmployee = false;
+
+    UserModel.findOneAndUpdate( { userEmail }, {userEmail, isEmployee }, { new: true, upsert: true })
+    .then(dbUser => {
+      console.log(dbUser);
+    }).catch(err => {
+      res.status(500).json(err);
+    });
   }
 };

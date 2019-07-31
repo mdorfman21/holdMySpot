@@ -2,13 +2,17 @@ import React from "react";
 import Button from "./Button";
 import InputBar from "./Input-Bar";
 import API from "../Utils/API";
+import { useAuth0 } from '../react-auth0-wrapper';
 
 class CreateEventContainer extends React.Component {
   state = {
     eventName: "",
     address: "",
-    estimatedWaitTime: 0
+    estimatedWaitTime: 0,
+   
   };
+
+ 
 
   inputChange = e => {
     const value = e.target.value;

@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import CreateEventContainer from "./components/Create-Event-Container";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Profile from "./components/Profile";
+import PrivateRoute from './components/PrivateRoute';
 
 class App extends Component {
   render() {
@@ -17,7 +18,7 @@ class App extends Component {
           </div>
             <Switch>
               <Route exact path="/" component={CreateEventContainer} />
-              <Route exact path="/profile" component={Profile} />
+              <PrivateRoute exact path="/profile" component={Profile} />
             </Switch>
           </BrowserRouter>
         </div>
