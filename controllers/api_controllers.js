@@ -23,10 +23,19 @@ module.exports = {
   },
 
   createUser: function(req, res) {
+    console.log(req.body);
     const userEmail = req.body.email;
     let isEmployee = false;
+    const user = req.body;
 
-    UserModel.findOneAndUpdate( { userEmail }, {userEmail, isEmployee }, { new: true, upsert: true })
+    // UserModel.findOneAndUpdate( { userEmail }, { user , isEmployee }, { new: true, upsert: true })
+    // .then(dbUser => {
+    //   console.log(dbUser);
+    // }).catch(err => {
+    //   res.status(500).json(err);
+    // });
+
+    UserModel.create( {...user, isEmployee: false} )
     .then(dbUser => {
       console.log(dbUser);
     }).catch(err => {

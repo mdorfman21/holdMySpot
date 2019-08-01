@@ -3,7 +3,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require("mongoose");
-const routes = require("./routes/api");
+const routes = require("./routes/api/index");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
