@@ -1,56 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import InputBar from "./Input-Bar";
 import API from "../Utils/API";
-import { useAuth0 } from '../react-auth0-wrapper';
 
-class CreateEventContainer extends React.Component {
-  state = {
-    eventName: "",
-    address: "",
-    estimatedWaitTime: 0,
-   
-  };
+
+
+function CreateEventContainer() {
+
+  const [ eventName, setEventName] = useState();
+  const [ address, setAddress ] = useState();
+  const [ estimatedWaitTime, setEstimatedWaitTime ] = useState();
+
 
  
-
-  inputChange = e => {
-    const value = e.target.value;
-    const name = e.target.name;
-    this.setState({ [name]: value });
-  };
-
-  submitEvent = () => {
-    const address = this.state.address;
-    const estimatedWaitTime = this.state.estimatedWaitTime;
-    const eventName = this.state.eventName;
-    const eventObject = { address, estimatedWaitTime, eventName };
-    API.createEvent(eventObject);
-  };
-
-  render() {
-    console.log(this.state);
     return (
       <div>
         <InputBar
-          onChange={this.inputChange}
+          onChange={e => {setEventName(e.target.value)}}
           name="eventName"
           placeholder="Event Name"
         />
+        <h2>The event name state is {eventName}</h2>
         <InputBar
-          onChange={this.inputChange}
+          onChange={e => {setAddress(e.target.value)}}
           name="address"
           placeholder="Address"
         />
+        <h2>address state is {address}</h2>
         <InputBar
-          onChange={this.inputChange}
+          onChange={e => {setEstimatedWaitTime(e.target.value)}}
           name="estimatedWaitTime"
           placeholder="Estimated Wait Time"
         />
-        <Button name="Submit" onClick={this.submitEvent} />
+        <h2>wait time state is {estimatedWaitTime}</h2>
+       <Button name="Submit" onClick={() => API.createEvent({eventName, address, estimatedWaitTime})} />
       </div>
     );
   }
-}
+
+
+  
+
+  
 
 export default CreateEventContainer;
