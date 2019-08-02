@@ -27,12 +27,23 @@ module.exports = {
     console.log(req.body);
     const user = req.body;
 
-    UserModel.findOneAndUpdate( req.body.email, {$set:{ ...user , isEmployee: false }}, { new: true, upsert: true, useFindAndModify: false }, (err, dbUser) => {
+    UserModel.findOneAndUpdate( req.body.email, { ...user , isEmployee: false }, { new: true, upsert: true, useFindAndModify: false }, (err, dbUser) => {
       if (err) {
         console.log(err);
       }
       console.log(`completed!`);
       res.json(dbUser);
+    });
+  },
+
+  getEvents: function(req, res) {
+    EventModel.find({}, (err, dbEvents) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(`sent the events in the database!`);
+      res.json(dbEvents);
+      
     });
   }
 };

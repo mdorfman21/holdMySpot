@@ -5,6 +5,7 @@ import CreateEventContainer from "./components/Create-Event-Container";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Profile from "./components/Profile";
 import PrivateRoute from './components/PrivateRoute';
+import WaitBoard from './components/WaitBoard';
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={CreateEventContainer} />
               <PrivateRoute exact path="/profile" component={Profile} />
+              <Route exact path="/events" component={WaitBoard} />
             </Switch>
           </BrowserRouter>
         </div>

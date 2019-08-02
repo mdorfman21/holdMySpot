@@ -7,5 +7,9 @@ export default {
 
   createUser: function(user) {
     return axios.post("/create/user", user);
+  },
+
+  getEvent: function() {
+    return axios.get("/events");
   }
 };
