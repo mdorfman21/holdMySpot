@@ -13,33 +13,26 @@ module.exports = {
       eventName,
       address,
       estimatedWaitTime
-    })
-      .then(dbEvent => {
-        console.log(dbEvent);
-      })
-      .catch(err => {
-        res.status(500).json(err);
-      });
+    }, (err, dbEvent) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log('completed!');
+      res.json(dbEvent);
+    });
+
   },
 
   createUser: function(req, res) {
     console.log(req.body);
-    const userEmail = req.body.email;
-    let isEmployee = false;
     const user = req.body;
 
-    // UserModel.findOneAndUpdate( { userEmail }, { user , isEmployee }, { new: true, upsert: true })
-    // .then(dbUser => {
-    //   console.log(dbUser);
-    // }).catch(err => {
-    //   res.status(500).json(err);
-    // });
-
-    UserModel.create( {...user, isEmployee: false} )
-    .then(dbUser => {
-      console.log(dbUser);
-    }).catch(err => {
-      res.status(500).json(err);
+    UserModel.findOneAndUpdate( req.body.email, {$set:{ ...user , isEmployee: false }}, { new: true, upsert: true, useFindAndModify: false }, (err, dbUser) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(`completed!`);
+      res.json(dbUser);
     });
   }
 };
