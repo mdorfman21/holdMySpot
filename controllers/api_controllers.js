@@ -8,11 +8,13 @@ module.exports = {
     const eventName = req.body.eventName;
     const address = req.body.address;
     const estimatedWaitTime = req.body.estimatedWaitTime;
+    const owner = req.body.owner;
 
     EventModel.create({
       eventName,
       address,
-      estimatedWaitTime
+      estimatedWaitTime,
+      owner
     }, (err, dbEvent) => {
       if (err) {
         console.log(err);

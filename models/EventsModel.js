@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const EventSchema = new Schema({
   eventName: String,
   address: String,
-  estimatedWaitTime: Number
+  estimatedWaitTime: Number,
+  owner: String,
 });
 
 const EventInfo = mongoose.model("EventInfo", EventSchema);

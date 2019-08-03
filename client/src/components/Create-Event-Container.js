@@ -11,12 +11,14 @@ function CreateEventContainer() {
   const [ address, setAddress ] = useState();
   const [ estimatedWaitTime, setEstimatedWaitTime ] = useState();
   const { loading, user } = useAuth0();
+  
 
   if (loading || !user) {
     return "Please log in to continue to make an event!";
   }
 
  
+   
     return (
       <div>
         {!user.name ?  null : <h1> {JSON.stringify(user)}</h1>}
@@ -39,7 +41,7 @@ function CreateEventContainer() {
           placeholder="Estimated Wait Time"
         />
         <h2>wait time state is {estimatedWaitTime}</h2>
-       <Button name="Submit" onClick={() => API.createEvent({eventName, address, estimatedWaitTime})} />
+       <Button name="Submit" onClick={() => API.createEvent({eventName, address, estimatedWaitTime, owner: user.name})} />
        <Button name="Save" onClick={() => API.createUser(user)} />
       </div>
     );

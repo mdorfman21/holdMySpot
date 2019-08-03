@@ -16,6 +16,7 @@ if (events.length > 0) {
   return events.map(event => (
     <div key={event._id}>
       <h2>{event.eventName}</h2>
+      <h3>Waiting for {event.owner}</h3>
     </div>
   ))
 } else {
