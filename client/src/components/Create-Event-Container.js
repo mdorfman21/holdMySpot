@@ -41,7 +41,7 @@ function CreateEventContainer() {
           placeholder="Estimated Wait Time"
         />
         <h2>wait time state is {estimatedWaitTime}</h2>
-       <Button name="Submit" onClick={() => API.createEvent({eventName, address, estimatedWaitTime, owner: user.name})} />
+       <Button name="Submit" onClick={() => API.createEvent({eventName, address, estimatedWaitTime, owner: user.name, booked: false})} />
        <Button name="Save" onClick={() => API.createUser(user)} />
       </div>
     );

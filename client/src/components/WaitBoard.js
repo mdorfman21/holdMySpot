@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import API from '../Utils/API';
+import Button from './Button';
 
 function WaitBoard(props) {
 
@@ -17,6 +18,9 @@ if (events.length > 0) {
     <div key={event._id}>
       <h2>{event.eventName}</h2>
       <h3>Waiting for {event.owner}</h3>
+      {event.booked === false ? 
+      <Button name="Book Now"/> : 
+      <Button name="Booked"/>}
     </div>
   ))
 } else {
