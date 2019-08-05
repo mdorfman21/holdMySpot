@@ -7,7 +7,8 @@ const EventSchema = new Schema({
   address: String,
   estimatedWaitTime: Number,
   owner: String,
-  booked: Boolean
+  booked: Boolean,
+  bookedBy: String,
 });
 
 const EventInfo = mongoose.model("EventInfo", EventSchema);

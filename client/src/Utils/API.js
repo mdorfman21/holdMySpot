@@ -11,5 +11,9 @@ export default {
 
   getEvent: function() {
     return axios.get("/events");
+  },
+
+  findAndUpdateEvent: function(eventAndEmployee) {
+    return axios.put("/events", eventAndEmployee);
   }
 };
